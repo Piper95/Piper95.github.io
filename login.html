@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Personal Login</title>
+    <meta content="" name="descriptison">
+    <meta content="" name="keywords">
+    <!-- Favicons -->
+    <link rel="shortcut icon" href="favicon%20.ico" type="image/x_icon"/>
+    <!-- Vendor CSS Files -->
+    <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="assets/vendor/icofont/icofont.min.css" rel="stylesheet">
+    <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+    <link href="assets/vendor/remixicon/remixicon.css" rel="stylesheet">
+    <link href="assets/vendor/owl.carousel/assets/owl.carousel.min.css" rel="stylesheet">
+    <link href="assets/vendor/venobox/venobox.css" rel="stylesheet">
+
+    <!-- Template Main CSS File -->
+    <link href="assets/css/style.css" rel="stylesheet">
+
+
+    <script src="assets/js/jquery-3.6.0.js"></script>
+</head>
+<body>
+<!-- ======= Header ======= -->
+<header id="header" class="fixed-top">
+    <div class="container d-flex align-items-center">
+
+        <h1 class="logo mr-auto"><a href="index.html">Yulin City, Guangxi Zhuang Autonomous Region</a></h1>
+
+        <!--Navigation bar-->
+        <nav class="nav-menu d-none d-lg-block">
+            <ul>
+                <li ><a href="index.html" target="_blank">Home</a></li>
+                <li><a href="areas.html" target="_blank">Overview</a></li>
+                <li><a href="travel.html" target="_blank">Travel</a></li>
+                <li><a href="food.html" target="_blank">Food</a></li>
+                <li><a href="history.html" target="_blank">History</a></li>
+                <li><a href="GroupMembers.html">About us</a></li>
+                <li class="drop-down"><a href="">Personal Center</a>
+                    <ul>
+                        <li class="active"><a href="login.html">login</a></li>
+                        <li><a href="regist.html" target="_blank">register</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </nav><!-- .nav-menu -->
+
+    </div>
+</header><!-- End Header -->
+
+<main id="main">
+    <section id="login" class="login">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div id="second">
+                        <h1>Account Login</h1>
+
+                        <form id="myform">
+
+                            <label>User Name:</label>
+                            <input name="name" id="name" type="text" placeholder="Please enter your username">
+                            <label class="bitan">*</label>
+                            <br>
+                            <label id="warn-name">Please enter your username</label>
+                            <br id="br-1">
+                            <label>Password:</label>
+                            <input name="pwd" id="pwd" class="input-2" type="password" placeholder="Please enter your password">
+                            <label class="bitan">*</label>
+                            <br>
+                            <label id="warn-pwd">Password cannot be empty</label>
+                            <br id="br-2">
+                            <label>Confirm:</label>
+                            <input name="repwd" id="repwd" class="input-2" type="password" placeholder="Please enter your password again">
+                            <label class="bitan">*</label>
+                            <br>
+                            <label id="warn-repwd">Re-enter password cannot be empty</label>
+                            <br id="br-3">
+                            <input type="submit" value="login"  id="loginbt" name="">
+
+                        </form>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+    </section>
+
+</main>
+
+
+<!-- ======= Footer ======= -->
+  <footer id="footer">
+        <div class="container">
+          <!--      <h3>MeFamily</h3>-->
+          <p>2022-2023 2thSemester&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Software&nbsp;&nbsp;&nbsp;Web Technology</p >
+          <p>Error correction contact:S18568513607</p >
+        </div>
+      </footer><!-- End Footer -->
+
+<!-- ======= Back to top ======= -->
+<a href="#" class="back-to-top"><i class="icofont-simple-up"></i></a>
+
+<script>
+    $(function () {
+        //Define Variables
+        var flagUser=false
+        var flagPwd=false
+        var flagCpwd=false
+
+        var $username=$('#name')
+        var $userpwd=$('#pwd')
+        var $userrepwd=$('#repwd')
+        var $userem=$('#em')
+        var $usersf=$('#sf')
+        var $usernb=$('#nb')
+        var $submit=$('#myform')
+
+        $username.blur(function () {
+            // Wrapping functions Calling functions
+            fnCheckUser()
+        })
+        function fnCheckUser() {
+            // // Get the data entered by the user
+            var vals = $username.val()
+            // // Regular, regular to verify that the data entered by the user is legitimate
+            var re = /^\w{6,18}$/
+            //
+            if (vals == '') {
+                $("#warn-name").text("Username cannot be empty")
+                $("#warn-name").css("margin-left","5px");
+                $("#warn-name").css("display","inline");
+                $("#br-1").css("display","inline");
+                flagUser=false
+                return
+            }else{
+                $("#warn-name").css("display","none");
+                $("#br-1").css("display","none");
+                flagUser=true
+            }
+            if (re.test(vals)){
+                $("#warn-name").css("display","none");
+                $("#br-1").css("display","none");
+                flagUser=true
+            }else{
+                $("#warn-name").text("User name is 6-18 digits, letters and underscore")
+                $("#warn-name").css("margin-left","155px");
+                $("#warn-name").css("display","inline");
+                $("#br-1").css("display","inline");
+                flagUser=false
+            }
+        }
+
+        $userpwd.blur(function () {
+            // Wrapping functions Calling functions
+            fnCheckPwd()
+        })
+        function fnCheckPwd() {
+            // // Get the data entered by the user
+            var vals = $userpwd.val()
+            // // Regular, regular to verify that the data entered by the user is legitimate
+            var re = /^\w{6,18}$/
+            //
+            if (vals == '') {
+                $("#warn-pwd").text("Password cannot be empty")
+                $("#warn-pwd").css("margin-left","-15px");
+                $("#warn-pwd").css("display","inline");
+                $("#br-2").css("display","inline");
+                flagPwd=false
+                return
+            }else{
+                $("#warn-pwd").css("display","none");
+                $("#br-2").css("display","none");
+                flagPwd=true
+            }
+            if (re.test(vals)){
+                $("#warn-pwd").css("display","none");
+                $("#br-2").css("display","none");
+                flagPwd=true
+            }else{
+                $("#warn-pwd").text("Password is 6-20 digits, letters and underscore")
+                $("#warn-pwd").css("margin-left","145px");
+                $("#warn-pwd").css("display","inline");
+                $("#br-2").css("display","inline");
+                flagPwd=false
+            }
+        }
+
+        $userrepwd.blur(function () {
+            // Wrapping functions Calling functions
+            fnCheckRePwd()
+        })
+        function fnCheckRePwd() {
+            // // Get the data entered by the user
+            var vals = $userrepwd.val()
+            var vals2 = $userpwd.val()
+            // // Regular, regular to verify that the data entered by the user is legitimate
+            var re = /^\w{6,18}$/
+            //
+            if (vals == '') {
+                $("#warn-repwd").css("display","inline");
+                $("#br-3").css("display","inline");
+                flagCpwd=false
+                return
+            }else{
+                $("#warn-repwd").css("display","none");
+                $("#br-3").css("display","none");
+                flagCpwd=true
+            }
+            if (re.test(vals)){
+                $("#warn-repwd").css("display","none");
+                $("#br-3").css("display","none");
+                flagCpwd=true
+            }
+            if (vals==vals2){
+                $("#warn-repwd").css("display","none");
+                $("#br-3").css("display","none");
+                flagCpwd=true
+            }else {
+                $("#warn-repwd").text("Two times to enter the password does not match")
+                $("#warn-repwd").css("margin-left","30px");
+                $("#warn-repwd").css("display","inline");
+                $("#br-3").css("display","inline");
+                flagCpwd=false
+            }
+        }
+
+
+        $submit.submit(function () {
+            console.log("form execution")
+            if (flagCpwd&&flagPwd&&flagUser){
+                alert("Login successful!")
+            }
+            else{
+                alert("Login failed!")
+                return false
+            }
+        })
+    });
+</script>
+</body>
+</html>
